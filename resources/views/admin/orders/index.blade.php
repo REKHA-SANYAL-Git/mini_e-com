@@ -28,8 +28,8 @@
                     @foreach ($orders as $order)
                         <tr style="background-color: #fff;">
                             <td style="padding: 0.75rem; border: 1px solid #ddd;">{{ $order->id }}</td>
-                            <td style="padding: 0.75rem; border: 1px solid #ddd;">{{ $order->customer->username }}</td> <!-- Or any other customer field -->
-                            <td style="padding: 0.75rem; border: 1px solid #ddd;">{{ $order->product->name }}</td> <!-- Or any other product field -->
+                            <td style="padding: 0.75rem; border: 1px solid #ddd;">{{ optional($order->customer)->username ?? 'N/A' }}</td> <!-- Check if customer exists -->
+                            <td style="padding: 0.75rem; border: 1px solid #ddd;">{{ optional($order->product)->name ?? 'N/A' }}</td> <!-- Check if product exists -->
                             <td style="padding: 0.75rem; border: 1px solid #ddd;">{{ $order->quantity }}</td>
                             <td style="padding: 0.75rem; border: 1px solid #ddd;">${{ number_format($order->total_price, 2) }}</td>
                             <td style="padding: 0.75rem; border: 1px solid #ddd;">{{ $order->created_at->format('d-m-Y H:i:s') }}</td>
